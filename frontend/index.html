@@ -1,0 +1,599 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PeopleDesk | HR Management</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">
+                <i class="bi bi-people-fill"></i>
+            </div>
+            <div>
+                <h4>PeopleDesk</h4>
+                <small>HR Management</small>
+            </div>
+        </div>
+
+        <div class="sidebar-label">MAIN MENU</div>
+
+        <nav class="sidebar-nav">
+
+            <a href="#dashboard" class="nav-link active">
+                <i class="bi bi-grid-1x2-fill"></i>
+                Dashboard
+            </a>
+
+            <a href="#employees" class="nav-link">
+                <i class="bi bi-people"></i>
+                Employees
+            </a>
+
+            <a href="#tasks" class="nav-link">
+                <i class="bi bi-list-check"></i>
+                Task Management
+            </a>
+
+        </nav>
+
+        <div class="sidebar-label">MANAGEMENT</div>
+
+        <nav class="sidebar-nav">
+
+            <a href="#employeeForms" class="nav-link">
+                <i class="bi bi-person-plus"></i>
+                Add Employee
+            </a>
+
+            <a href="#taskForms" class="nav-link">
+                <i class="bi bi-plus-square"></i>
+                Create Task
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="admin-avatar">A</div>
+            <div>
+                <strong>Administrator</strong>
+                <small>HR Admin</small>
+            </div>
+            <i class="bi bi-three-dots ms-auto"></i>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- TOP HEADER -->
+        <header class="topbar">
+
+            <div>
+                <h5>HR Management Portal</h5>
+                <small>Manage your people and tasks efficiently</small>
+            </div>
+
+            <div class="topbar-right">
+                <div class="topbar-date">
+                    <i class="bi bi-calendar3"></i>
+                    <span id="currentDate">HR Dashboard</span>
+                </div>
+
+                <div class="topbar-profile">
+                    <div class="profile-avatar">A</div>
+                    <div>
+                        <strong>Admin</strong>
+                        <small>Administrator</small>
+                    </div>
+                </div>
+            </div>
+
+        </header>
+
+
+        <!-- DASHBOARD -->
+        <section id="dashboard" class="page-section">
+
+            <div class="welcome-section">
+                <div>
+                    <span class="section-tag">OVERVIEW</span>
+                    <h2>Dashboard Overview</h2>
+                    <p>Welcome back! Here's what's happening in your organization.</p>
+                </div>
+
+                <a href="#employeeForms" class="btn btn-primary">
+                    <i class="bi bi-plus-lg"></i>
+                    Add Employee
+                </a>
+            </div>
+
+
+            <!-- STATISTICS -->
+            <div class="row g-3 stats-row">
+
+                <div class="col-xl col-md-4 col-sm-6">
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <span>Total Employees</span>
+                            <div class="stat-icon icon-blue">
+                                <i class="bi bi-people-fill"></i>
+                            </div>
+                        </div>
+                        <h2 id="totalEmployees">0</h2>
+                        <small>Registered employees</small>
+                    </div>
+                </div>
+
+                <div class="col-xl col-md-4 col-sm-6">
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <span>Total Tasks</span>
+                            <div class="stat-icon icon-purple">
+                                <i class="bi bi-clipboard-check"></i>
+                            </div>
+                        </div>
+                        <h2 id="totalTasks">0</h2>
+                        <small>All assigned tasks</small>
+                    </div>
+                </div>
+
+                <div class="col-xl col-md-4 col-sm-6">
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <span>Pending Tasks</span>
+                            <div class="stat-icon icon-orange">
+                                <i class="bi bi-clock-history"></i>
+                            </div>
+                        </div>
+                        <h2 id="pendingTasks">0</h2>
+                        <small>Waiting to start</small>
+                    </div>
+                </div>
+
+                <div class="col-xl col-md-4 col-sm-6">
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <span>In Progress</span>
+                            <div class="stat-icon icon-cyan">
+                                <i class="bi bi-arrow-repeat"></i>
+                            </div>
+                        </div>
+                        <h2 id="inProgressTasks">0</h2>
+                        <small>Currently ongoing</small>
+                    </div>
+                </div>
+
+                <div class="col-xl col-md-4 col-sm-6">
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <span>Completed</span>
+                            <div class="stat-icon icon-green">
+                                <i class="bi bi-check-circle"></i>
+                            </div>
+                        </div>
+                        <h2 id="completedTasks">0</h2>
+                        <small>Successfully finished</small>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- QUICK ACTIONS -->
+            <div class="section-heading">
+                <div>
+                    <h4>Quick Actions</h4>
+                    <p>Manage employees and tasks from here.</p>
+                </div>
+            </div>
+
+            <div class="row g-3 quick-actions">
+
+                <div class="col-md-6">
+                    <a href="#employeeForms" class="quick-action-card">
+                        <div class="quick-action-icon icon-blue">
+                            <i class="bi bi-person-plus-fill"></i>
+                        </div>
+                        <div>
+                            <h6>Add New Employee</h6>
+                            <p>Register a new team member</p>
+                        </div>
+                        <i class="bi bi-arrow-up-right ms-auto"></i>
+                    </a>
+                </div>
+
+                <div class="col-md-6">
+                    <a href="#taskForms" class="quick-action-card">
+                        <div class="quick-action-icon icon-green">
+                            <i class="bi bi-clipboard-plus"></i>
+                        </div>
+                        <div>
+                            <h6>Create New Task</h6>
+                            <p>Assign work to your employees</p>
+                        </div>
+                        <i class="bi bi-arrow-up-right ms-auto"></i>
+                    </a>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- EMPLOYEE FORMS -->
+        <section id="employeeForms" class="page-section content-section">
+
+            <div class="section-heading">
+                <div>
+                    <span class="section-tag">PEOPLE MANAGEMENT</span>
+                    <h4>Employee Management</h4>
+                    <p>Add new employees or update existing employee information.</p>
+                </div>
+            </div>
+
+            <div class="row g-4">
+
+                <!-- ADD EMPLOYEE -->
+                <div class="col-lg-6">
+                    <div class="panel-card">
+
+                        <div class="panel-header">
+                            <div class="panel-icon icon-blue">
+                                <i class="bi bi-person-plus"></i>
+                            </div>
+                            <div>
+                                <h5>Add New Employee</h5>
+                                <p>Create an employee record</p>
+                            </div>
+                        </div>
+
+                        <form id="employeeForm">
+
+                            <div class="mb-3">
+                                <label class="form-label">Employee Name</label>
+                                <input type="text" id="name" class="form-control" placeholder="Enter full name" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Email Address</label>
+                                <input type="email" id="email" class="form-control" placeholder="employee@company.com" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Department</label>
+                                <input type="text" id="department" class="form-control" placeholder="e.g. Engineering" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Designation</label>
+                                <input type="text" id="designation" class="form-control" placeholder="e.g. Software Developer" required>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary w-100">
+                                <i class="bi bi-plus-circle"></i>
+                                Add Employee
+                            </button>
+
+                            <p id="employeeMessage" class="form-message mt-3"></p>
+
+                        </form>
+
+                    </div>
+                </div>
+
+
+                <!-- UPDATE EMPLOYEE -->
+                <div class="col-lg-6">
+                    <div class="panel-card">
+
+                        <div class="panel-header">
+                            <div class="panel-icon icon-orange">
+                                <i class="bi bi-pencil-square"></i>
+                            </div>
+                            <div>
+                                <h5>Update Employee</h5>
+                                <p>Edit existing employee details</p>
+                            </div>
+                        </div>
+
+                        <form id="updateEmployeeForm">
+
+                            <div class="mb-3">
+                                <label class="form-label">Employee ID</label>
+                                <input type="number" id="updateEmployeeId" class="form-control" placeholder="Enter employee ID" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">New Name</label>
+                                <input type="text" id="updateName" class="form-control" placeholder="Enter employee name" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">New Email</label>
+                                <input type="email" id="updateEmail" class="form-control" placeholder="Enter email address" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">New Department</label>
+                                <input type="text" id="updateDepartment" class="form-control" placeholder="Enter department" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">New Designation</label>
+                                <input type="text" id="updateDesignation" class="form-control" placeholder="Enter designation" required>
+                            </div>
+
+                            <button type="submit" class="btn btn-warning w-100">
+                                <i class="bi bi-arrow-repeat"></i>
+                                Update Employee
+                            </button>
+
+                            <p id="updateEmployeeMessage" class="form-message mt-3"></p>
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- TASK FORMS -->
+        <section id="taskForms" class="page-section content-section">
+
+            <div class="section-heading">
+                <div>
+                    <span class="section-tag">WORK MANAGEMENT</span>
+                    <h4>Task Management</h4>
+                    <p>Create tasks, assign employees and track progress.</p>
+                </div>
+            </div>
+
+            <div class="row g-4">
+
+                <!-- CREATE TASK -->
+                <div class="col-lg-6">
+                    <div class="panel-card">
+
+                        <div class="panel-header">
+                            <div class="panel-icon icon-green">
+                                <i class="bi bi-plus-square"></i>
+                            </div>
+                            <div>
+                                <h5>Create New Task</h5>
+                                <p>Assign a new task to an employee</p>
+                            </div>
+                        </div>
+
+                        <form id="taskForm">
+
+                            <div class="mb-3">
+                                <label class="form-label">Task Title</label>
+                                <input type="text" id="taskTitle" class="form-control" placeholder="Enter task title" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Task Description</label>
+                                <textarea id="taskDescription" class="form-control" rows="3" placeholder="Describe the task" required></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Assign Employee</label>
+                                <select id="assignedTo" class="form-select" required>
+                                    <option value="">Select Employee</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Due Date</label>
+                                <input type="date" id="dueDate" class="form-control" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Task Status</label>
+                                <select id="taskStatus" class="form-select" required>
+                                    <option value="Pending">Pending</option>
+                                    <option value="In Progress">In Progress</option>
+                                    <option value="Completed">Completed</option>
+                                </select>
+                            </div>
+
+                            <button type="submit" class="btn btn-success w-100">
+                                <i class="bi bi-plus-circle"></i>
+                                Create Task
+                            </button>
+
+                            <p id="taskMessage" class="form-message mt-3"></p>
+
+                        </form>
+
+                    </div>
+                </div>
+
+
+                <!-- UPDATE TASK -->
+                <div class="col-lg-6">
+                    <div class="panel-card">
+
+                        <div class="panel-header">
+                            <div class="panel-icon icon-orange">
+                                <i class="bi bi-pencil-square"></i>
+                            </div>
+                            <div>
+                                <h5>Update Task</h5>
+                                <p>Modify an existing task</p>
+                            </div>
+                        </div>
+
+                        <form id="updateTaskForm">
+
+                            <div class="mb-3">
+                                <label class="form-label">Task ID</label>
+                                <input type="number" id="updateTaskId" class="form-control" placeholder="Enter task ID" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">New Task Title</label>
+                                <input type="text" id="updateTaskTitle" class="form-control" placeholder="Enter task title" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">New Description</label>
+                                <textarea id="updateTaskDescription" class="form-control" rows="3" placeholder="Enter task description" required></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Assign Employee</label>
+                                <select id="updateAssignedTo" class="form-select" required>
+                                    <option value="">Select Employee</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">New Due Date</label>
+                                <input type="date" id="updateDueDate" class="form-control" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">New Task Status</label>
+                                <select id="updateTaskStatus" class="form-select">
+                                    <option value="">Keep Existing Status</option>
+                                    <option value="Pending">Pending</option>
+                                    <option value="In Progress">In Progress</option>
+                                    <option value="Completed">Completed</option>
+                                </select>
+                            </div>
+
+                            <button type="submit" class="btn btn-warning w-100">
+                                <i class="bi bi-arrow-repeat"></i>
+                                Update Task
+                            </button>
+
+                            <p id="updateTaskMessage" class="form-message mt-3"></p>
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- EMPLOYEE AND TASK DIRECTORY -->
+        <section class="page-section content-section">
+
+            <div class="section-heading" id="employees">
+                <div>
+                    <span class="section-tag">ORGANIZATION</span>
+                    <h4>Employee Directory</h4>
+                    <p>View and manage all registered employees.</p>
+                </div>
+            </div>
+
+            <div class="panel-card">
+
+                <div class="list-header">
+                    <div>
+                        <h5>All Employees</h5>
+                        <p>Employee information and management</p>
+                    </div>
+
+                    <a href="#employeeForms" class="btn btn-outline-primary">
+                        <i class="bi bi-person-plus"></i>
+                        Add Employee
+                    </a>
+                </div>
+
+                <input
+                    type="search"
+                    id="employeeSearch"
+                    class="form-control search-field"
+                    placeholder="Search by employee name, email, department or designation..."
+                >
+
+                <div id="employeeList" class="employee-list"></div>
+
+            </div>
+
+
+            <div class="section-heading task-list-heading" id="tasks">
+                <div>
+                    <span class="section-tag">WORKSPACE</span>
+                    <h4>Task Directory</h4>
+                    <p>Monitor and manage employee tasks.</p>
+                </div>
+            </div>
+
+            <div class="panel-card">
+
+                <div class="list-header">
+                    <div>
+                        <h5>All Tasks</h5>
+                        <p>Task assignments and progress tracking</p>
+                    </div>
+
+                    <a href="#taskForms" class="btn btn-outline-primary">
+                        <i class="bi bi-plus-lg"></i>
+                        Create Task
+                    </a>
+                </div>
+
+                <input
+                    type="search"
+                    id="taskSearch"
+                    class="form-control search-field"
+                    placeholder="Search by task title, description, status or employee..."
+                >
+
+                <div id="taskList" class="task-list"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <span>PeopleDesk HR Management System</span>
+            <span>Employee and Task Management Portal</span>
+        </footer>
+
+    </main>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
