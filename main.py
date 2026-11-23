@@ -16,12 +16,14 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://127.0.0.1:5500",
-        "http://localhost:5500"
+        "http://localhost:5500",
+        # Add your deployed frontend URL here after creating it
     ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 @app.get("/")
 def home():
@@ -35,8 +37,10 @@ def about():
 
 # CREATE EMPLOYEE
 @app.post("/employees/", response_model=schemas.EmployeeResponse)
-def create_employee(employee: schemas.EmployeeCreate,
-                    db: Session = Depends(get_db)):
+def create_employee(
+    employee: schemas.EmployeeCreate,
+    db: Session = Depends(get_db)
+):
     new_employee = models.Employee(
         name=employee.name,
         email=employee.email,
@@ -58,11 +62,15 @@ def get_employees(db: Session = Depends(get_db)):
 
 
 # UPDATE EMPLOYEE
-@app.put("/employees/{employee_id}",
-         response_model=schemas.EmployeeResponse)
-def update_employee(employee_id: int,
-                    employee: schemas.EmployeeUpdate,
-                    db: Session = Depends(get_db)):
+@app.put(
+    "/employees/{employee_id}",
+    response_model=schemas.EmployeeResponse
+)
+def update_employee(
+    employee_id: int,
+    employee: schemas.EmployeeUpdate,
+    db: Session = Depends(get_db)
+):
     existing_employee = db.query(models.Employee).filter(
         models.Employee.id == employee_id
     ).first()
@@ -83,7 +91,10 @@ def update_employee(employee_id: int,
 
 # DELETE EMPLOYEE
 @app.delete("/employees/{employee_id}")
-def delete_employee(employee_id: int, db: Session = Depends(get_db)):
+def delete_employee(
+    employee_id: int,
+    db: Session = Depends(get_db)
+):
     employee = db.query(models.Employee).filter(
         models.Employee.id == employee_id
     ).first()
@@ -99,8 +110,10 @@ def delete_employee(employee_id: int, db: Session = Depends(get_db)):
 
 # CREATE TASK
 @app.post("/tasks/", response_model=schemas.TaskResponse)
-def create_task(task: schemas.TaskCreate,
-                db: Session = Depends(get_db)):
+def create_task(
+    task: schemas.TaskCreate,
+    db: Session = Depends(get_db)
+):
     new_task = models.Task(
         title=task.title,
         description=task.description,
@@ -137,9 +150,11 @@ def get_task(task_id: int, db: Session = Depends(get_db)):
 
 # UPDATE TASK
 @app.put("/tasks/{task_id}", response_model=schemas.TaskResponse)
-def update_task(task_id: int,
-                task: schemas.TaskUpdate,
-                db: Session = Depends(get_db)):
+def update_task(
+    task_id: int,
+    task: schemas.TaskUpdate,
+    db: Session = Depends(get_db)
+):
     existing_task = db.query(models.Task).filter(
         models.Task.id == task_id
     ).first()
@@ -172,6 +187,7 @@ def delete_task(task_id: int, db: Session = Depends(get_db)):
     db.commit()
 
     return {"message": "Task deleted successfully"}
+
 
 
 
