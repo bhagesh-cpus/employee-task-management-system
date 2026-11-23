@@ -17,7 +17,7 @@ app.add_middleware(
     allow_origins=[
         "http://127.0.0.1:5500",
         "http://localhost:5500",
-        # Add your deployed frontend URL here after creating it
+        "https://employee-task-management-system-1-i55c.onrender.com"
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -187,6 +187,7 @@ def delete_task(task_id: int, db: Session = Depends(get_db)):
     db.commit()
 
     return {"message": "Task deleted successfully"}
+
 
 
 
