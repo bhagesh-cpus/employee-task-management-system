@@ -4,4 +4,4 @@ uvicorn
 sqlalchemy
 psycopg2-binary
 python-dotenv
-dir /b README.md requirements.txt
+
